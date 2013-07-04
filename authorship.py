@@ -380,25 +380,27 @@ class FederalistPapers():
 		return test
 
 
-# test for Federalist Papers
 
-train1 = FederalistPapers.get_trainset_class1()
-train2 = FederalistPapers.get_trainset_class2()
-test = FederalistPapers.get_testset()
+if __name__ == '__main__':
+	# test for Federalist Papers
 
-filenames = FederalistPapers.test_filenames
+	train1 = FederalistPapers.get_trainset_class1()
+	train2 = FederalistPapers.get_trainset_class2()
+	test = FederalistPapers.get_testset()
 
-corpus = TestCorpus(train1, train2, test, [])
-corpus.set_nr_features(25)
-corpus.classifier_type = TestCorpus.classifier_types['SVM_POLY']
+	filenames = FederalistPapers.test_filenames
 
-corpus.feature_type = TestCorpus.feature_types['FREQUENCY_NORMALIZED']
-corpus.compute_featuresets()
-#print 'features: ', corpus.feature_words_custom, len(corpus.feature_words_custom)
+	corpus = TestCorpus(train1, train2, test, [])
+	corpus.set_nr_features(25)
+	corpus.classifier_type = TestCorpus.classifier_types['SVM_POLY']
 
-corpus.train_classifier()
-corpus.testall_accuracy()
-corpus.results_per_file(filenames)
+	corpus.feature_type = TestCorpus.feature_types['FREQUENCY_NORMALIZED']
+	corpus.compute_featuresets()
+	#print 'features: ', corpus.feature_words_custom, len(corpus.feature_words_custom)
 
-#corpus.plot_stopwords_vs_accuracy(True)
-#pprint(corpus.cross_validate(3))
+	corpus.train_classifier()
+	corpus.testall_accuracy()
+	corpus.results_per_file(filenames)
+
+	#corpus.plot_stopwords_vs_accuracy(True)
+	#pprint(corpus.cross_validate(3))
