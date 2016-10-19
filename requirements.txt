@@ -1,0 +1,3 @@
+nltk==2.0.4
+sklearn
+matplotlib
